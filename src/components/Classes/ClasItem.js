@@ -5,7 +5,7 @@ import { fetchClases } from "../../store/actions/clasActions";
 const ClasItem = (props) => {
   const clas = props.clas;
   const dispatch = useDispatch();
-  dispatch(fetchClases());
+  // dispatch(fetchClases());
 
   return (
     <div
@@ -19,7 +19,7 @@ const ClasItem = (props) => {
           <h5 class="card-title">{clas.name}</h5>
         </Link>
         <h6 class="card-subtitle mb-2  text-right" style={{ color: "white" }}>
-          {clas.price} BD
+          {clas.price === 0 ? "Free" : clas.price + " BD"}
         </h6>
       </div>
     </div>

@@ -4,8 +4,12 @@ import { useHistory } from "react-router-dom";
 import { ListForm, Form, FormButton, H } from "../../styles";
 import { signup } from "../../store/actions/authActions";
 import { useForm } from "react-hook-form";
+import { AiFillEye } from "react-icons/ai";
+import { AiFillEyeInvisible } from "react-icons/ai";
 
 export default function Signup() {
+  const [pass, setpass] = useState("password");
+
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -28,6 +32,11 @@ export default function Signup() {
     dispatch(signup(user, history));
     return false;
   };
+
+  const showPass = () => {
+    pass === "password" ? setpass("text") : setpass("password");
+  };
+
   return (
     <ListForm>
       <Form onSubmit={handleSubmit(Sub)}>
@@ -53,15 +62,27 @@ export default function Signup() {
           <label for="colFormLabel" class="col-sm-2 col-form-label">
             Password
           </label>
-          <div class="col-sm-10">
-            <input
-              class="form-control"
-              value={user.password}
-              type="password"
-              name="password"
-              onChange={handleChange}
-              ref={register({ required: true })}
-            />
+          <div
+            style={{ display: "flex", flexDirection: "column" }}
+            class="col-sm-10 input-group mb-3"
+          >
+            <div style={{ display: "flex" }}>
+              <input
+                class="form-control"
+                value={user.password}
+                type={pass}
+                name="password"
+                onChange={handleChange}
+                ref={register({ required: true })}
+              />
+              <span class="input-group-text" id="basic-addon2">
+                {pass === "password" ? (
+                  <AiFillEye size="1.5em" onClick={showPass} />
+                ) : (
+                  <AiFillEyeInvisible size="1.5em" onClick={showPass} />
+                )}
+              </span>
+            </div>
             {errors.password && "*Password is required"}
           </div>
         </div>

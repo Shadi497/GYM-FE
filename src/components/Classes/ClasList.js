@@ -23,7 +23,7 @@ const ClasList = (props) => {
 
   const dispatch = useDispatch();
 
-  if (user && fetch) dispatch(fetchClases());
+  // if (user && fetch) dispatch(fetchClases());
 
   if (!user) {
     return <Redirect to="/signin" />;
@@ -48,7 +48,6 @@ const ClasList = (props) => {
     .map((clas) => <ClasItem clas={clas} free={free} />);
 
   const clasLis = props.clases
-    // .filter((clas) => (free === 0 ? clas.price === 0 : clas.price > 0))
     .filter((clas) => clas.name.toLowerCase().includes(query.toLowerCase()))
     .filter((clas) => clas.typeId === +typeId)
     .map((clas) => <ClasItem clas={clas} free={free} />);

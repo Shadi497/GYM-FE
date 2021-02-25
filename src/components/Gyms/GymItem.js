@@ -1,7 +1,7 @@
 import { ProductWrappert } from "../../styles";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Redirect } from "react-router";
+import { toast } from "react-toastify";
 
 const GymItem = (props) => {
   const gym = props.gym;
@@ -21,6 +21,7 @@ const GymItem = (props) => {
           <Link to={`/signin`}>
             <img alt={gym.name} src={gym.image} />
           </Link>
+
           <p>
             <b>{gym.name}</b>
           </p>

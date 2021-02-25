@@ -147,7 +147,7 @@ export const Title = styled.h1`
 
 export const TitleH = styled.h1`
   text-align: center;
-  color: white;
+  // color: white;
   margin-top: 220px;
 `;
 export const Logoimg = styled.img`

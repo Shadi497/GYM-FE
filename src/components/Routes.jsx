@@ -17,12 +17,15 @@ import { fetchClases } from "../store/actions/clasActions";
 import { useSelector, useDispatch } from "react-redux";
 import ClasForm from "./Classes/ClasForm";
 import ClasDetail from "./Classes/ClasDetail";
+import MyClasses from "./Classes/MyClasses";
 
 export default function Routes() {
   const types = useSelector((state) => state.typeReducer.types);
 
   const clases = useSelector((state) => state.clasReducer.clases);
 
+  const dispatch = useDispatch();
+  dispatch(fetchClases());
   return (
     <Switch>
       <Route exact path={"/gyms/:gymId/types/new"}>
@@ -47,6 +50,10 @@ export default function Routes() {
 
       <Route exact path="/classes/:classId">
         <ClasDetail />
+      </Route>
+
+      <Route exact path="/myclasses">
+        <MyClasses />
       </Route>
 
       <Route path="/gyms">

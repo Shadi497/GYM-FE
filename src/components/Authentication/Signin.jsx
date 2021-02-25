@@ -52,7 +52,7 @@ export default function Signin() {
               onChange={handleChange}
               ref={register({ required: true })}
             />
-            {errors.username && "User name is required"}
+            {errors.username && "*User name is required"}
           </div>
         </div>
 
@@ -60,23 +60,28 @@ export default function Signin() {
           <label for="colFormLabel" class="col-sm-2 col-form-label">
             Password
           </label>
-          <div class="col-sm-10 input-group mb-3">
-            <input
-              class="form-control"
-              value={user.password}
-              type={pass}
-              name="password"
-              onChange={handleChange}
-              ref={register({ required: true })}
-            />
-            <span class="input-group-text" id="basic-addon2">
-              {pass === "password" ? (
-                <AiFillEye size="1.5em" onClick={showPass} />
-              ) : (
-                <AiFillEyeInvisible size="1.5em" onClick={showPass} />
-              )}
-            </span>
-            {errors.password && "Password is required"}
+          <div
+            style={{ display: "flex", flexDirection: "column" }}
+            class="col-sm-10 input-group mb-3"
+          >
+            <div style={{ display: "flex" }}>
+              <input
+                class="form-control"
+                value={user.password}
+                type={pass}
+                name="password"
+                onChange={handleChange}
+                ref={register({ required: true })}
+              />
+              <span class="input-group-text" id="basic-addon2">
+                {pass === "password" ? (
+                  <AiFillEye size="1.5em" onClick={showPass} />
+                ) : (
+                  <AiFillEyeInvisible size="1.5em" onClick={showPass} />
+                )}
+              </span>
+            </div>
+            {errors.password && "*Password is required"}
           </div>
         </div>
 

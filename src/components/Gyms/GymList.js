@@ -54,9 +54,11 @@ const GymList = () => {
           Add
         </button>
       ) : (
-        <Link to="/signin">
-          <AddButton />
-        </Link>
+        <>
+          <Link to="/signin">
+            <AddButton />
+          </Link>
+        </>
       )}
       <ListWrapper>{gymList}</ListWrapper>
     </div>
